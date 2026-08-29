@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title desc">
+  <title id="title">Logo HCMUT</title>
+  <desc id="desc">Logo Bách Khoa Thành phố Hồ Chí Minh</desc>
+  <g opacity=".96">
+    <path fill="#12378e" d="M300 24 170 99v150l130-75z"/>
+    <path fill="#198bd2" d="M300 24 430 99v150l-130-75z"/>
+    <path fill="#198bd2" d="m40 324 130-75 130 75-130 75z"/>
+    <path fill="#12378e" d="m40 324 130 75v150L40 474z"/>
+    <path fill="#198bd2" d="m560 324-130-75-130 75 130 75z"/>
+    <path fill="#12378e" d="m560 324-130 75v150l130-75z"/>
+    <path fill="#12378e" d="m170 399 130 75 130-75v150l-130 75-130-75z"/>
+    <path fill="#198bd2" d="m300 474 130-75v150l-130 75z"/>
+    <path fill="#fff" d="m300 174 130 75v150l-130 75-130-75V249z"/>
+    <text x="300" y="326" fill="#12378e" font-family="Arial, sans-serif" font-size="92" font-weight="700" text-anchor="middle">BK</text>
+    <text x="300" y="372" fill="#198bd2" font-family="Arial, sans-serif" font-size="34" font-weight="700" text-anchor="middle">TP.HCM</text>
+  </g>
+</svg>
