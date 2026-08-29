@@ -638,6 +638,133 @@ function ChatBox({ apiKey, location, slope, rain, score, meta, safetyStatus }) {
   return <section className="chat-box"><div className="chat-heading"><div><span className="section-kicker">HỖ TRỢ TRỰC TUYẾN</span><h2>Trợ lý an toàn EcoRisk</h2></div><span className="chat-status"><span /> Sẵn sàng</span></div><div className="chat-messages" aria-live="polite">{messages.map((message, index) => <div className={`chat-message chat-${message.role}${message.type ? ` chat-${message.type}` : ''}`} key={`${message.role}-${message.type || 'standard'}-${index}`}>{message.text}</div>)}{sending && <div className="chat-message chat-assistant chat-typing"><LoaderCircle size={14} className="spin" /> Đang trả lời...</div>}</div><form className="chat-form" onSubmit={sendMessage}><input value={question} onChange={(event) => setQuestion(event.target.value)} placeholder="Mô tả tình trạng hoặc đặt câu hỏi..." aria-label="Tin nhắn cho trợ lý an toàn" /><button type="submit" disabled={sending || !question.trim()} aria-label="Gửi tin nhắn" title="Gửi tin nhắn"><ArrowUpRight size={17} /></button></form></section>
 }
 
+function FloatingChatBubble() {
+  const [open, setOpen] = useState(false)
+  const [draft, setDraft] = useState('')
+  const [activeId, setActiveId] = useState('team-lead')
+  const [threads, setThreads] = useState([
+    { id: 'team-lead', name: 'Nguyễn Sỹ Tiến Đạt', role: 'Hỗ trợ kỹ thuật', avatar: 'Đ', accent: '#397255', status: 'online', messages: [
+        { id: 1, sender: 'them', text: 'Mình đang theo dõi tình trạng mưa và tuyến đường dễ ngập ở khu vực của bạn.' },
+        { id: 2, sender: 'me', text: 'Cảm ơn. Tôi cần hướng dẫn di chuyển an toàn ngay lúc này.' },
+      ]
+    },
+    { id: 'rescue', name: 'Đội cứu hộ', role: 'Mạng lưới khẩn cấp', avatar: 'C', accent: '#de762f', status: 'online', messages: [
+        { id: 1, sender: 'them', text: 'Đội cứu hộ đang sẵn sàng hỗ trợ; hãy chia sẻ vị trí nếu có nguy cơ nước dâng.' },
+      ]
+    },
+    { id: 'coordinator', name: 'Lan Anh', role: 'Điều phối địa phương', avatar: 'L', accent: '#4f8a60', status: 'busy', messages: [
+        { id: 1, sender: 'them', text: 'Khu vực của bạn đang có mưa kéo dài, nên ưu tiên tuyến đường cao hơn.' },
+      ]
+    },
+  ])
+
+  const activeThread = threads.find((thread) => thread.id === activeId) || threads[0]
+
+  function sendMessage(event) {
+    event.preventDefault()
+    const text = draft.trim()
+    if (!text || !activeThread) return
+
+    setThreads((current) => current.map((thread) =>
+      thread.id === activeThread.id
+        ? { ...thread, messages: [...thread.messages, { id: Date.now(), sender: 'me', text }] }
+        : thread
+    ))
+    setDraft('')
+  }
+
+  function addSystemNote(label, type) {
+    if (!activeThread) return
+    const note = type === 'voice' ? `Đã gửi lời mời gọi thoại đến ${activeThread.name}.` : `Đã gửi lời mời gọi video đến ${activeThread.name}.`
+    setThreads((current) => current.map((thread) =>
+      thread.id === activeThread.id
+        ? { ...thread, messages: [...thread.messages, { id: Date.now(), sender: 'them', text: label ? `${note} ${label}` : note }] }
+        : thread
+    ))
+  }
+
+  return (
+    <div className={`floating-chat ${open ? 'open' : ''}`}>
+      {!open && (
+        <button type="button" className="chat-bubble-trigger" onClick={() => setOpen(true)} aria-label="Mở hội thoại">
+          <Users size={18} />
+          <span>Chat</span>
+        </button>
+      )}
+
+      {open && (
+        <div className="chat-float-panel" role="dialog" aria-label="Hộp tin nhắn nhanh">
+          <div className="chat-float-header">
+            <div className="chat-float-title">
+              <span className="section-kicker">HỘI THOẠI</span>
+              <h3>Liên hệ nhanh</h3>
+            </div>
+            <button type="button" className="icon-button" onClick={() => setOpen(false)} aria-label="Đóng hộp chat">
+              <X size={16} />
+            </button>
+          </div>
+
+          <div className="chat-float-body">
+            <div className="chat-float-contacts">
+              {threads.map((thread) => (
+                <button
+                  key={thread.id}
+                  type="button"
+                  className={`chat-contact ${thread.id === activeThread.id ? 'selected' : ''}`}
+                  onClick={() => setActiveId(thread.id)}
+                >
+                  <span className="contact-avatar" style={{ background: thread.accent }}>{thread.avatar}</span>
+                  <span className="contact-meta">
+                    <strong>{thread.name}</strong>
+                    <small>{thread.status === 'online' ? 'Trực tuyến' : 'Bận'}</small>
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            <div className="chat-float-thread">
+              <div className="chat-thread-topbar">
+                <div>
+                  <strong>{activeThread.name}</strong>
+                  <small>{activeThread.role}</small>
+                </div>
+                <div className="chat-actions">
+                  <button type="button" aria-label="Gọi thoại" onClick={() => addSystemNote('Hãy nhắn tin ngay khi cần hỗ trợ.', 'voice')}>
+                    <Phone size={15} />
+                  </button>
+                  <button type="button" aria-label="Gọi video" onClick={() => addSystemNote('Hãy tham gia video call ngay nếu tình huống cần hỗ trợ trực tiếp.', 'video')}>
+                    <Video size={15} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="chat-thread-messages" aria-live="polite">
+                {activeThread.messages.map((message) => (
+                  <div key={message.id} className={`chat-thread-message ${message.sender === 'me' ? 'mine' : ''}`}>
+                    {message.text}
+                  </div>
+                ))}
+              </div>
+
+              <form className="chat-thread-form" onSubmit={sendMessage}>
+                <input
+                  value={draft}
+                  onChange={(event) => setDraft(event.target.value)}
+                  placeholder="Nhập tin nhắn..."
+                  aria-label="Nhập tin nhắn nhanh"
+                />
+                <button type="submit" aria-label="Gửi tin nhắn" disabled={!draft.trim()}>
+                  <ArrowUpRight size={16} />
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function App() {
   const [user, setUser] = useState(null)
   const [guest, setGuest] = useState(false)
@@ -796,6 +923,7 @@ export default function App() {
       <ContactPanel user={user} guest={guest} />
       <footer><span><FileText size={14} /> Báo cáo được tạo từ dữ liệu người dùng cung cấp</span><span><Navigation size={14} /> Dữ liệu chỉ mang tính tham khảo, không thay thế cảnh báo chính thức</span></footer>
     </main>
+    <FloatingChatBubble />
     <MapPicker open={mapOpen} onClose={() => setMapOpen(false)} initialCoordinates={activeProfile.coordinates} onSelect={({ address, coordinates }) => setPlace(`${address} (${coordinates.lat.toFixed(6)}, ${coordinates.lng.toFixed(6)})`)} />
   </div>
 }
