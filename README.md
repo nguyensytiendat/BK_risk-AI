@@ -2,7 +2,7 @@
 
 [![Build with Google AI](https://img.shields.io/badge/Build%20with-Google%20AI-4285F4?logo=google)](https://ai.google.dev/)
 [![Powered by Gemini](https://img.shields.io/badge/Powered%20by-Gemini%20API-8E75FF?logo=google-gemini)](https://aistudio.google.com/)
-[![Deployed on Cloud Run](https://img.shields.io/badge/Deployed%20on-Google%20Cloud%20Run-4285F4?logo=google-cloud)](https://cloud.google.com/run)
+[![Deployed on Firebase](https://img.shields.io/badge/Deployed%20on-Firebase-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/)
 [![Frontend](https://img.shields.io/badge/Frontend-React%20%2B%20Vite%20%2B%20Tailwind-blue)](https://react.dev/)
 
 > **EcoRisk-AI** là giải pháp ứng dụng trí tuệ nhân tạo hỗ trợ phân tích, đánh giá và dự báo nguy cơ rủi ro sinh thái, tai biến môi trường từ dữ liệu quan trắc và tọa độ địa lý. Dự án được nghiên cứu và phát triển nhằm giúp các nhà nghiên cứu và cơ quan quản lý đưa ra quyết định kịp thời, phòng chống thiên tai hiệu quả.
@@ -10,10 +10,9 @@
 ---
 
 ## 📌 Liên kết dự án (Google AI Riser Vietnam)
-* 🌐 **Live Demo (Cloud Run):** *(Đang cập nhật)*
-* 🎥 **Video Demo:** *(Đang cập nhật)*
-* 📑 **Báo cáo Kỹ thuật:** *(Đang cập nhật)*
-*(Các liên kết sẽ được mở công khai sau khi hoàn tất quá trình đóng gói và triển khai ứng dụng).*
+* 🌐 **Live Demo (Firebase Hosting):** [Dán link .web.app của bạn vào đây]
+* 🎥 **Video Demo:** [Dán link YouTube/Drive của bạn vào đây]
+* 📑 **Báo cáo Kỹ thuật:** [Dán link báo cáo của bạn vào đây]
 
 ---
 
