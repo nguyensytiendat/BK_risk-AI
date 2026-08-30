@@ -1,11 +1,11 @@
-# 🌍 EcoRisk-AI — Nền tảng Đánh giá & Cảnh báo Rủi ro Sinh thái Thông minh
+# 🌍 BK_risk-AI — Nền tảng Đánh giá & Cảnh báo Rủi ro Sinh thái Thông minh
 
 [![Build with Google AI](https://img.shields.io/badge/Build%20with-Google%20AI-4285F4?logo=google)](https://ai.google.dev/)
 [![Powered by Gemini](https://img.shields.io/badge/Powered%20by-Gemini%20API-8E75FF?logo=google-gemini)](https://aistudio.google.com/)
 [![Deployed on Firebase](https://img.shields.io/badge/Deployed%20on-Firebase-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/)
 [![Frontend](https://img.shields.io/badge/Frontend-React%20%2B%20Vite%20%2B%20Tailwind-blue)](https://react.dev/)
 
-> **EcoRisk-AI** là giải pháp ứng dụng trí tuệ nhân tạo hỗ trợ phân tích, đánh giá và dự báo nguy cơ rủi ro sinh thái, tai biến môi trường từ dữ liệu quan trắc và tọa độ địa lý. Dự án được nghiên cứu và phát triển nhằm giúp các nhà nghiên cứu và cơ quan quản lý đưa ra quyết định kịp thời, phòng chống thiên tai hiệu quả.
+> **BK_risk-AI** là giải pháp ứng dụng trí tuệ nhân tạo hỗ trợ phân tích, đánh giá và dự báo nguy cơ rủi ro sinh thái, tai biến môi trường từ dữ liệu quan trắc và tọa độ địa lý. Dự án được nghiên cứu và phát triển nhằm giúp các nhà nghiên cứu và cơ quan quản lý đưa ra quyết định kịp thời, phòng chống thiên tai hiệu quả.
 
 ---
 
