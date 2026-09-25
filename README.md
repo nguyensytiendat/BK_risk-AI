@@ -11,7 +11,7 @@
 
 ## 📌 Liên kết dự án (Google AI Riser Vietnam)
 * 🌐 **Live Demo (Firebase Hosting):** https://ecorisk-ai-78d85.web.app/
-* 🎥 **Video Demo:** [Dán link YouTube/Drive của bạn vào đây]
+* 🎥 **Video Demo:** https://youtu.be/awrT1rjJLi0?si=HYJ6ZuOywBKN_0GD
 
 ---
 
